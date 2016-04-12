@@ -6,7 +6,7 @@ load 'bike.rb'
 
   it "adds a new bike" do
     bike = subject.release_bike
-    expect(bike).to be_working 
+    expect(bike).to be_working
   end
 
   it "docks a bike at docking station" do
@@ -21,6 +21,9 @@ load 'bike.rb'
   end
 
 
+  it "raises error when the bike rack is at overcapacity" do
+    expect {subject.dock(bike)}.to raise_error("Already at capacity") if @bike_count == 1
+  end
 
 
 

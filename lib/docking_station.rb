@@ -18,8 +18,14 @@ class DockingStation
 	end
 
 	def dock(bike)
-		@bike = bike
-		@bike_count += 1
+		if @bike_count == 1
+			@bike_count
+			fail  "Already at capacity"
+		else
+			p @bike_count
+			@bike_count += 1
+			@bike = bike
+		end
 	end
 
 end
