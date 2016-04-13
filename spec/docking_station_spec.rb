@@ -1,7 +1,7 @@
 load 'docking_station.rb'
 
 describe DockingStation do
-
+let(:bike) { double :bike }
 	it { is_expected.to respond_to :release_bike }
 
 	it { is_expected.to respond_to(:dock).with(1).argument }
@@ -9,20 +9,19 @@ describe DockingStation do
 	it { is_expected.to respond_to :bikes }
 
 	it 'docks something' do
-		bike = double(:bike)
+
 		expect(subject.dock(bike)).to eq [bike]
 	end
 
 	it 'does not release a broken bike' do
-		bike = double(:bike)
-		bike.report_broken
+		bike = double("bike", :broken? => true)
 		subject.dock(bike)
 		expect {subject.release_bike}.to raise_error 'Bike is broken'
 
 	end
 
 	it 'returns docked bikes' do
-		bike = double(:bike)
+
 		subject.dock(bike)
 		expect(subject.bikes).to eq [bike]
 	end
