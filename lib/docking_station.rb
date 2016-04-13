@@ -11,6 +11,7 @@ attr_reader :bikes, :capacity
 
   def release_bike
     raise 'No bikes available' if empty?
+    raise 'Bike is broken' if broken?
     @bikes.pop
 	end
 
@@ -27,6 +28,10 @@ end
 
 def empty?
 @bikes.empty?
+end
+
+def broken?
+@bikes.last::broken?
 end
 
 end
