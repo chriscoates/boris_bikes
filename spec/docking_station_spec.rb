@@ -24,7 +24,7 @@ load 'bike.rb'
 
   it "raises error when the bike rack is at overcapacity" do
     bike = Bike.new
-    expect {($DEFAULT_CAPACITY+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
+    expect {(DockingStation::DEFAULT_CAPACITY+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
   end
 
 end

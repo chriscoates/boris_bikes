@@ -3,10 +3,10 @@ require_relative 'bike'
 class DockingStation
 
 	attr_accessor :bikes
+	DEFAULT_CAPACITY = 20
 
 	def initialize
 		@bikes = []
-		$DEFAULT_CAPACITY = 20
 	end
 
   def empty?
@@ -23,7 +23,7 @@ class DockingStation
 	end
 
 	def dock(bike)
-		if @bikes.length == $DEFAULT_CAPACITY
+		if @bikes.length == DEFAULT_CAPACITY
 			fail  "Already at capacity"
 		else
 			@bikes << bike
