@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
@@ -6,6 +7,7 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
     @capacity = capacity
     @bikes = []
+    @output = ""
   end
 
 
@@ -18,6 +20,18 @@ class DockingStation
   def dock(bike)
     raise 'Docking station full' if full?
     @bikes << bike
+  end
+
+  def collect
+    broken_bikes
+  end
+
+  def broken_bikes
+    @bikes.each { |bike|
+      if bike::broken?
+        bike
+      end
+    }
   end
 
   private
@@ -33,6 +47,5 @@ class DockingStation
   def broken?
     @bikes.last::broken?
   end
-
 end
 
