@@ -10,7 +10,7 @@ class DockingStation
 	end
 
 	def release_bike
-		if self.empty?
+		if empty?
 			fail  "No bikes to release"
 		else
 			@bikes.pop
@@ -18,14 +18,14 @@ class DockingStation
 	end
 
 	def dock(bike)
-		if self.full?
+		if full?
 			fail "Already at capacity"
 		else
 			@bikes << bike
-			@bike
 		end
 	end
 
+private
 
 	def empty?
 		@bikes.length == 0

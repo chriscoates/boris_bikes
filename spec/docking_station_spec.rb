@@ -2,7 +2,8 @@ load 'docking_station.rb'
 load 'bike.rb'
 
   describe DockingStation do
-    it { is_expected.to respond_to :release_bike }
+
+  it { is_expected.to respond_to :release_bike }
 
   it "adds a new bike" do
     bike = Bike.new
