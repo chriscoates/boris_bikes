@@ -6,6 +6,7 @@ class DockingStation
 
 	def initialize
 		@bikes = []
+		$DEFAULT_CAPACITY = 20
 	end
 
   def empty?
@@ -22,7 +23,7 @@ class DockingStation
 	end
 
 	def dock(bike)
-		if @bikes.length == 20
+		if @bikes.length == $DEFAULT_CAPACITY
 			fail  "Already at capacity"
 		else
 			@bikes << bike
