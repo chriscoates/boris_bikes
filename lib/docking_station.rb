@@ -9,13 +9,8 @@ class DockingStation
 		@bikes = []
 	end
 
-  def empty?
-		@bikes.length == 0
-	end
-
-
 	def release_bike
-		if @bikes.length == 0
+		if self.empty?
 			fail  "No bikes to release"
 		else
 			@bikes.pop
@@ -23,12 +18,21 @@ class DockingStation
 	end
 
 	def dock(bike)
-		if @bikes.length == DEFAULT_CAPACITY
-			fail  "Already at capacity"
+		if self.full?
+			fail "Already at capacity"
 		else
 			@bikes << bike
 			@bike
 		end
+	end
+
+
+	def empty?
+		@bikes.length == 0
+	end
+
+	def full?
+		@bikes.length == DEFAULT_CAPACITY
 	end
 
 end
