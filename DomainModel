@@ -1,0 +1,8 @@
+:i
+Person <= Use
+Docking station <= Release bike
+
+Person <= Use
+Bike <= Is working?
+
+
