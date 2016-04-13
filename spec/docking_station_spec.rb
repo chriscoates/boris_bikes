@@ -16,13 +16,13 @@ load 'bike.rb'
   end
 
   it "raises error when there are no bikes left and there is a request to release bike" do
-    bike1 = subject.release_bike
-    expect {bike2 = subject.release_bike}.to raise_error("No bikes to release")
+    subject.bike_count = 0
+    expect {bike = subject.release_bike}.to raise_error("No bikes to release")
   end
 
-
   it "raises error when the bike rack is at overcapacity" do
-    expect {subject.dock(bike)}.to raise_error("Already at capacity") if @bike_count == 1
+    bike = Bike.new
+    expect {subject.dock(bike)}.to raise_error("Already at capacity")
   end
 
 

@@ -2,10 +2,10 @@ require_relative 'bike'
 
 class DockingStation
 
-	attr_accessor :bike
+	attr_accessor :bike, :bike_count
 
 	def initialize
-		@bike_count = 1
+		@bike_count = 20
 	end
 
 	def release_bike
@@ -18,11 +18,9 @@ class DockingStation
 	end
 
 	def dock(bike)
-		if @bike_count == 1
-			@bike_count
+		if @bike_count > 19
 			fail  "Already at capacity"
 		else
-			p @bike_count
 			@bike_count += 1
 			@bike = bike
 		end
