@@ -7,7 +7,6 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
     @capacity = capacity
     @bikes = []
-
   end
 
 
@@ -22,16 +21,14 @@ class DockingStation
     @bikes << bike
   end
 
-  def collect
-  #   broken_bikes
-  end
+
 
   def broken_bikes
-    @bikes.each { |bike|
+    @bikes.select do |bike|
       if bike::broken?
         bike
       end
-    }
+    end
   end
 
   private

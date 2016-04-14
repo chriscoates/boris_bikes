@@ -18,6 +18,12 @@ describe DockingStation do
 		expect(subject.bikes).to eq [bike]
 	end
 
+	it 'sends broken bikes to broken_bikes' do
+		bike = double(:bike, :broken? => true)
+		subject.dock(bike)
+		expect(subject.broken_bikes).to eq [bike]
+	end
+
 	describe '#release_bike' do
 		it 'raises an error when there are no bikes available' do
 			expect {subject.release_bike}.to raise_error 'No bikes available'
