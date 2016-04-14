@@ -28,4 +28,9 @@ load 'bike.rb'
     expect {(DockingStation::DEFAULT_CAPACITY+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
   end
 
+  it "allows a default value to be set when creating a new bike, otherwise reverts to 20" do
+    dock = DockingStation.new 25
+    expect (dock.capacity).to eq 25
+  end
+
 end
