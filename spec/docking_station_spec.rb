@@ -7,7 +7,7 @@ describe DockingStation do
 
   context "#release_bike" do
 
-    it "adds a new bike" do
+    it "releases a new bike" do
       bike = Bike.new
       subject.dock(bike)
       expect(bike).to be_working
@@ -23,15 +23,14 @@ describe DockingStation do
 
     it "raises error when the bike rack is at overcapacity" do
       bike = Bike.new
-      expect {(DockingStation::DEFAULT_CAPACITY+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
+      expect {(subject.capacity+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
     end
 
-    it "accepts a bike" do
-      bike = Bike.new
-      tracker = subject.bikes.length
-      subject.dock(bike)
-      expect(subject.bikes.length).to eq (tracker + 1)
+    it 'allows public to dock bikes' do
+      expect(subject).to respond_to(:dock).with(1).argument
     end
+
+
   end
 
   context "#initialize" do
