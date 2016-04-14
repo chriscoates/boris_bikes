@@ -1,5 +1,5 @@
-load 'docking_station.rb'
-load 'bike.rb'
+require 'docking_station.rb'
+require 'bike.rb'
 
 describe DockingStation do
 
