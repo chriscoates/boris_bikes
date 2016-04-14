@@ -24,7 +24,7 @@ describe DockingStation do
 		end
 
 		it 'does not release a broken bike' do
-			bike = double("bike", :broken? => true)
+			bike = double(:bike, :broken? => true)
 			subject.dock(bike)
 			expect {subject.release_bike}.to raise_error 'Bike is broken'
 		end
@@ -44,16 +44,6 @@ describe DockingStation do
 		end
 	end
 
-	describe '#van' do
-		it 'Return list of broken bikes' do
-			bike = double(:bike, :broken? => true)
-			scrap_bikes = []
-			5.times {
-				subject.dock(bike)
-				scrap_bikes << bike
-			}
-			expect(subject.collect).to eq scrap_bikes
-		end
-	end
+
 end
 

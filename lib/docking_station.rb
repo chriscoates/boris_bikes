@@ -7,7 +7,7 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
     @capacity = capacity
     @bikes = []
-    @output = ""
+
   end
 
 
@@ -23,7 +23,7 @@ class DockingStation
   end
 
   def collect
-    broken_bikes
+  #   broken_bikes
   end
 
   def broken_bikes
