@@ -1,7 +1,11 @@
 load 'docking_station.rb'
 load 'bike.rb'
 
+
 describe DockingStation do
+
+  let(:bike) { double :bike }
+
 
   it { is_expected.to respond_to :release_bike }
 
@@ -9,9 +13,11 @@ describe DockingStation do
 
     it "releases a new bike" do
       bike = double(:bike)
-      expect(bike).to be_working
+      allow(bike).to receive(:working?).and_return(true)
+      subject.dock(bike)
+      released_bike = subject.released_bike
+      expect(subject.release_bike).to be_working
     end
-
 
     it "raises error when there are no bikes left and there is a request to release bike" do
       expect {bike = subject.release_bike}.to raise_error("No bikes to release")
@@ -21,7 +27,7 @@ describe DockingStation do
   context "#dock" do
 
     it "raises error when the bike rack is at overcapacity" do
-      bike = double(:bike)
+      bike = :bike
       expect {(subject.capacity+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
     end
 
@@ -41,7 +47,6 @@ describe DockingStation do
       dock = DockingStation.new 25
       expect(dock.capacity).to eq 25
     end
-
 
   end
 end
