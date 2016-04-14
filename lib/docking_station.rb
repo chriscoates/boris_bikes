@@ -13,10 +13,14 @@ class DockingStation
 	def release_bike
 		if empty?
 			fail  "No bikes to release"
+		elsif @bikes[(@bikes.size-1)].working? == false
+			fail "The bike is broken"
 		else
 			@bikes.pop
 		end
 	end
+
+
 
 	def dock(bike)
 		if full?
