@@ -9,7 +9,6 @@ class DockingStation
     @bikes = []
   end
 
-
   def release_bike
     raise 'No bikes available' if empty?
     raise 'Bike is broken' if broken?
@@ -20,8 +19,6 @@ class DockingStation
     raise 'Docking station full' if full?
     @bikes << bike
   end
-
-
 
   def broken_bikes
     @bikes.select do |bike|
@@ -44,5 +41,6 @@ class DockingStation
   def broken?
     @bikes.last::broken?
   end
+  
 end
 

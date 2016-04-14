@@ -1,13 +1,12 @@
 require 'van'
 
 describe Van do
-  context "#collect_broken" do
-	 it 'contains the broken bikes?' do
-		#van = double(:van)
+  let(:bike) { double(:bike, report_broken: false, broken?: false) }
+  let(:broken_bike) { double(:broken_bike, report_broken: true, broken?: true) }
+  let(:station) { double(:station, broken_bikes: true) }
 
-    #allow(van).to receive(:collect_broken).and_return(true)
-    expect(subject.collect_broken).to be_truthy
-
+	it 'collects broken bikes' do
+    expect(subject.collect_broken(broken_bike))
 	 end
   end
 end
