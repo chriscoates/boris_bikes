@@ -38,6 +38,11 @@ describe DockingStation do
       expect(subject).to respond_to(:dock).with(1).argument
     end
 
+    it "allows us to return a bike broken or not" do
+      bike = Bike.new
+      bike.report_broken
+      expect(subject).to respond_to(:dock).with(1).argument
+    end
 
   end
 
