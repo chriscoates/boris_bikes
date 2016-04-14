@@ -20,8 +20,6 @@ class DockingStation
 		end
 	end
 
-
-
 	def dock(bike)
 		if full?
 			fail "Already at capacity"
@@ -41,5 +39,4 @@ private
 	def full?
 		@bikes.length == @capacity
 	end
-
 end

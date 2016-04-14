@@ -1,4 +1,4 @@
-require 'bike.rb'
+require 'bike'
 
 describe Bike do
   context "#working?" do
@@ -10,7 +10,5 @@ describe Bike do
       subject.report_broken
       expect(subject).to_not be_working
     end
-
   end
-
 end

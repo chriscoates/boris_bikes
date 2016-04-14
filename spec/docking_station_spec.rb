@@ -1,21 +1,18 @@
-load 'docking_station.rb'
-load 'bike.rb'
-
+require 'docking_station'
+require 'bike'
 
 describe DockingStation do
 
-  let(:bike) { double :bike }
-
+  let(:bike) { double :bike, working?: true }
 
   it { is_expected.to respond_to :release_bike }
 
   context "#release_bike" do
 
     it "releases a new bike" do
-      bike = double(:bike)
-      allow(bike).to receive(:working?).and_return(true)
+      #bike = double(:bike)                        #reminder that this line is above too :)
+      #allow(bike).to receive(:working?) {true}    #reminder that this line is above too :)
       subject.dock(bike)
-      released_bike = subject.released_bike
       expect(subject.release_bike).to be_working
     end
 
@@ -34,7 +31,6 @@ describe DockingStation do
     it 'allows public to dock bikes' do
       expect(subject).to respond_to(:dock).with(1).argument
     end
-
   end
 
   context "#initialize" do
@@ -47,6 +43,5 @@ describe DockingStation do
       dock = DockingStation.new 25
       expect(dock.capacity).to eq 25
     end
-
   end
 end

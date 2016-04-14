@@ -21,6 +21,4 @@ class Bike
 
   private
     attr_writer :working
-
-
 end
