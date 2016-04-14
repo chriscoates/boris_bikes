@@ -21,9 +21,13 @@ class DockingStation
   end
 
   def broken_bikes
-    @bikes.select do |bike|
+    bikes_broken = @bikes.select do |bike|
       bike.broken?
     end
+
+    @bikes -= bikes_broken
+    
+    bikes_broken
   end
 
   private
