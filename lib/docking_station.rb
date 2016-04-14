@@ -22,7 +22,7 @@ class DockingStation
 
   def broken_bikes
     @bikes.select do |bike|
-      if bike::broken?
+      if bike.broken?
         bike
       end
     end
@@ -41,6 +41,6 @@ class DockingStation
   def broken?
     @bikes.last::broken?
   end
-  
+
 end
 
