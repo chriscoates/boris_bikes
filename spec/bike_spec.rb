@@ -1,12 +1,14 @@
 require 'bike.rb'
 
 describe Bike do
-  it { is_expected.to respond_to :working? }
+  context "#working?" do
+    it { is_expected.to respond_to :working? }
+  end
 
   context "#report_broken" do
     it "reports bike as broken" do
       subject.report_broken
-      expect(subject).to be_broken
+      expect(subject).to_not be_working
     end
 
   end

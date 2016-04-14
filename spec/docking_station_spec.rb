@@ -3,9 +3,9 @@ require 'bike.rb'
 
 describe DockingStation do
 
-  it { is_expected.to respond_to :release_bike }
-
   context "#release_bike" do
+
+    it { is_expected.to respond_to :release_bike }
 
     it "releases a new bike" do
       bike = Bike.new
