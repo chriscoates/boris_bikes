@@ -1,15 +1,14 @@
-require 'docking_station.rb'
-require 'bike.rb'
+load 'docking_station.rb'
+load 'bike.rb'
 
 describe DockingStation do
 
+  it { is_expected.to respond_to :release_bike }
+
   context "#release_bike" do
 
-    it { is_expected.to respond_to :release_bike }
-
     it "releases a new bike" do
-      bike = Bike.new
-      subject.dock(bike)
+      bike = double(:bike)
       expect(bike).to be_working
     end
 
@@ -17,30 +16,16 @@ describe DockingStation do
     it "raises error when there are no bikes left and there is a request to release bike" do
       expect {bike = subject.release_bike}.to raise_error("No bikes to release")
     end
-
-    it "will not allow a broken bike to be released" do
-      bike = Bike.new
-      bike.report_broken
-      subject.dock(bike)
-      expect {subject.release_bike}.to raise_error("The bike is broken")
-    end
-
   end
 
   context "#dock" do
 
     it "raises error when the bike rack is at overcapacity" do
-      bike = Bike.new
+      bike = double(:bike)
       expect {(subject.capacity+1).times {subject.dock(bike)}}.to raise_error("Already at capacity")
     end
 
     it 'allows public to dock bikes' do
-      expect(subject).to respond_to(:dock).with(1).argument
-    end
-
-    it "allows us to return a bike broken or not" do
-      bike = Bike.new
-      bike.report_broken
       expect(subject).to respond_to(:dock).with(1).argument
     end
 
