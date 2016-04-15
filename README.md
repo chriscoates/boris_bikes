@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-# BorisBikes
-=======
 # BorisBikes
 
-This week 1 of the Ronin Ruby course at Makers Academy. We are learning the Ruby programming language so this will be written in Ruby. 
+This week 1 of the Ronin Ruby course at Makers Academy. We are learning the Ruby programming language so this will be written in Ruby.
 
-Transport for London, the body responsible for delivery of a new bike system, come to you with a plan: a network of Docking Stations and bikes that anyone can use. They want you to build a program that will run all the Docking Stations, simulate all the Bikes, and emulate all the infrastructure (vans, repair staff, and so on) required to make their dream a reality. 
+Transport for London, the body responsible for delivery of a new bike system, come to you with a plan: a network of Docking Stations and bikes that anyone can use. They want you to build a program that will run all the Docking Stations, simulate all the Bikes, and emulate all the infrastructure (vans, repair staff, and so on) required to make their dream a reality.
 
 Challenges
 
@@ -31,5 +28,3 @@ Isolating Tests with Doubles
 Mocking Behaviour on Doubles
 Men with Ven
 Modules as Mixins
-
->>>>>>> 3f0928ebdd7b937dabe122639ee39a2fcb87a12d
