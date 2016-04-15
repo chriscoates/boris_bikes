@@ -1,5 +1,5 @@
 class Bike
-
+#
   attr_accessor :docked
   attr_reader :working
 
