@@ -2,48 +2,39 @@ load 'docking_station.rb'
 
 describe DockingStation do
 
-  let(:bike) { double(:bike, report_broken: false, broken?: false) }
-  let(:broken_bike) { double(:broken_bike, report_broken: true, broken?: true) }
+  let(:bike) {spy :bike}
+  subject(:station) { described_class.new }
+  let (:working_bike){ double :bike, working?: true, dock: nil }
+    let(:broken_bike){ double :bike, working?: false, dock: nil }
+  context 'dock' do
 
-  it 'sends broken bikes to broken_bikes' do
-    subject.dock(broken_bike)
-    expect(subject.broken_bikes).to eq [broken_bike]
-  end
-
-  describe '#release_bike' do
-    it 'raises an error when there are no bikes available' do
-      expect {subject.release_bike}.to raise_error 'No bikes available'
-    end
-
-    # it 'does not release a broken bike' do
-    #   subject.dock(broken_bike)
-    #   expect {subject.release_bike}.to raise_error 'Bike is broken'
-    # end
-  end
-
-  describe '#dock' do
-
-    it 'docks something' do
-      expect(subject.dock(bike)).to eq [bike]
-    end
-
-    it 'returns docked bikes' do
-      subject.dock(bike)
-      expect(subject.bikes).to eq [bike]
+    it "lets bike know it has been docked" do
+      station.dock(bike)
+      expect(bike).to have_received(:dock)
     end
 
     it "raises an error when full" do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
-      expect { subject.dock(bike) }.to raise_error "Docking station full"
+      DockingStation::DEFAULT_CAPACITY.times { station.dock(bike) }
+      expect { station.dock(bike) }.to raise_error "Docking station full"
     end
 
-    it 'return capacity' do
-      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    it 'returns capacity' do
+      expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
 
     it 'when passed capacity 30 bikes return 30' do
       station1 = DockingStation.new(30)
       expect(station1.capacity).to eq 30
+    end
+
+  end
+
+
+  context 'with a working bike' do
+    it "can release a working bike" do
+      station.dock(working_bike)
+      station.dock(broken_bike)
+      expect(station.release_bike).to be_working
     end
   end
 
